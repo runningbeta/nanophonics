@@ -15,7 +15,7 @@ export const HeaderMenu = ({
   pathname,
   Link,
   inverted,
-  dispatch
+  dispatch,
 }: HeaderMenuProps) => (
   <Container>
     <Menu size="large" pointing secondary inverted={inverted}>
@@ -29,7 +29,7 @@ export const HeaderMenu = ({
         {/* <Icon name="spy" size="big" /> */}
         nanophonics
       </Menu.Item>
-      {items.map(item => {
+      {/* {items.map(item => {
         const active = item.exact
           ? pathname === item.path
           : pathname.startsWith(item.path);
@@ -43,7 +43,7 @@ export const HeaderMenu = ({
             active={active}
           />
         );
-      })}
+      })} */}
     </Menu>
   </Container>
 );

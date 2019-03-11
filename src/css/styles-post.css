@@ -7,7 +7,7 @@
 }
 
 .masthead .ui.text.container {
-  text-shadow: 1px 1px 6px #000;
+  text-shadow: 2px 2px 6px #000;
 }
 
 .ui.secondary.inverted.pointing.menu {
@@ -21,4 +21,8 @@
 .portfolio .portfolio-item h1.ui.header {
   margin-bottom: 1rem;
   color: #9e3744;
+}
+
+.ui.fluid.card > .content {
+  padding: 2rem;
 }

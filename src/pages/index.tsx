@@ -3,7 +3,15 @@ import { Link } from "gatsby";
 import HeaderMenu from "../components/HeaderMenu/HeaderMenu";
 import { withLayout, LayoutProps, menuItems } from "../components/Layout";
 import Contact from "../components/Contact/Contact";
-import { Segment, Container, Grid, Header } from "semantic-ui-react";
+import {
+  Segment,
+  Container,
+  Grid,
+  Header,
+  Card,
+  Button,
+  Icon,
+} from "semantic-ui-react";
 
 const IndexPage = (props: LayoutProps) => (
   <div>
@@ -20,17 +28,130 @@ const IndexPage = (props: LayoutProps) => (
           AI powered mobile apps
         </Header>
         <Header inverted as="h2">
-          DSP + Machine Learning + Mobile Apps
+          Signal Processing | Machine Learning | Mobile Apps
         </Header>
-        {/* <Button style={{ marginTop: "3rem" }} secondary size="huge">
-          Get started!
+        {/* <Button
+          style={{ marginTop: "3rem" }}
+          basic
+          inverted
+          color="black"
+          size="huge"
+        >
+          Contact us <Icon name="chevron right" />
         </Button> */}
       </Container>
     </Segment>
 
-    {/* About this starter */}
+    <Segment vertical className="stripe alternate">
+      <Container>
+        <Grid columns="2" stackable relaxed stretched>
+          <Grid.Row>
+            <Grid.Column width="2">
+              <Header as="h1">Services</Header>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
+              <Card fluid>
+                <Card.Content>
+                  <Header as="h2">
+                    <Icon name="signal" />
+                    Signal Processing &amp; Algorithms
+                  </Header>
+                  <Card.Description>
+                    <p>
+                      We have an in-depth understanding of the math &amp;
+                      physics behind the processes in nature.
+                    </p>
+                    <p>
+                      Whether you require extraction of relevant data from
+                      noise, prediction of important values from seemingly
+                      unimportant ones, or something else entirely, we can help.
+                    </p>
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card fluid>
+                <Card.Content>
+                  <Header as="h2">
+                    <Icon name="graduation" />
+                    Machine Learning
+                  </Header>
+                  <Card.Description>
+                    <p>
+                      Facial recognition, speech classification and automatic
+                      medical diagnosis are all practical uses of machine
+                      learning.
+                    </p>
+                    <p>
+                      If you have a problem that requires artificial
+                      intelligence that learns from your data, this is the right
+                      place to come.
+                    </p>
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
+              <Card fluid>
+                <Card.Content>
+                  <Header as="h2">
+                    <Icon name="sound" />
+                    Audio Development
+                  </Header>
+                  <Card.Description>
+                    <p>
+                      Not only we specialize in everything from making real-time
+                      audio processing to designing 2D and 3D audio solutions,
+                      we also take special interest in implementing custom VST
+                      plugins.
+                    </p>
+                    <p>
+                      Our team has more than 10 years of experience in the audio
+                      domains.
+                    </p>
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card fluid>
+                <Card.Content>
+                  <Header as="h2">
+                    <Icon name="mobile alternate" />
+                    Mobile Applications
+                  </Header>
+                  <Card.Description>
+                    <p>
+                      The algorithms and solutions we provide can be integrated
+                      into a native iOS and Android app to utilize powerful
+                      hardware and sensors available in today's phones.
+                    </p>
+                    <p>
+                      We take special pride in our secret processes of
+                      integrating smart systems with the mobile apps that do
+                      more and cost less.
+                    </p>
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
+    </Segment>
     <Segment vertical className="stripe portfolio">
-      <Grid stackable columns="2" verticalAlign="middle" className="container">
+      <Grid
+        stackable
+        relaxed
+        columns="2"
+        verticalAlign="middle"
+        className="container"
+      >
         <Grid.Row>
           <Grid.Column width="2">
             <Header as="h1">Portfolio</Header>
@@ -38,19 +159,46 @@ const IndexPage = (props: LayoutProps) => (
         </Grid.Row>
         <Grid.Row stretched className="portfolio-item">
           <Grid.Column>
+            <Header as="h1">
+              Luke Roberts - The World's First Smart Design Lamp
+            </Header>
+            <p>
+              Luke Roberts provides unique directional lighting technology and
+              powered by artificial intelligence to give you the perfect light
+              for any situation.
+            </p>
+            <p>
+              Senior engineers from Nanophonics are providing machine learning
+              solutions for this state-of-the-art lamp.
+            </p>
+          </Grid.Column>
+          <Grid.Column only="tablet computer">
             <div
               style={{
+                backgroundImage: `url(${require("../assets/products/lukeroberts.jpg")})`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
                 height: "25rem",
                 width: "100%",
-                backgroundImage: `url(${require("../assets/stock/pregnancy.jpg")})`,
+              }}
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row stretched className="portfolio-item">
+          <Grid.Column only="tablet computer">
+            <div
+              style={{
+                backgroundImage: `url(${require("../assets/products/shell.jpg")})`,
+                backgroundPosition: "center center",
                 backgroundSize: "cover",
-                backgroundPosition: "center center"
+                height: "25rem",
+                width: "100%",
               }}
             />
           </Grid.Column>
           <Grid.Column>
             <Header as="h1">
-              Bellabeat Shell: Listen to Babies Heartbeat using iPhone
+              Shell by Bellabeat: Listen to Babies Heartbeat using iPhone
             </Header>
             <p>
               <b>A safe, non-invasive and completely natural way</b> of
@@ -65,43 +213,46 @@ const IndexPage = (props: LayoutProps) => (
         </Grid.Row>
         <Grid.Row stretched className="portfolio-item">
           <Grid.Column>
-            <Header as="h1">NDA - Project in Machining Space</Header>
+            <Header as="h1">BassGorilla</Header>
             <p>
-              <b>Developing an App for partner in the machining space</b>
-              <ul>
-                <li>DSP</li>
-                <li>Machine Learning</li>
-                <li>iOS</li>
-              </ul>
+              BassGorilla is a electronic music production company specialized
+              in interviewing top producers and get them to share exactly what’s
+              working for them in terms of state-of-the-art music production
+              techniques, ranging from sound design to songwriting to mixing and
+              mastering.
+            </p>
+            <p>
+              Nanophonics provided advanced custom VSTs for world-class
+              production needs.
             </p>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column only="tablet computer">
             <div
               style={{
+                backgroundImage: `url(${require("../assets/stock/studio.jpeg")})`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
                 height: "25rem",
                 width: "100%",
-                backgroundImage: `url(${require("../assets/stock/lathe.jpg")})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center center"
               }}
             />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row stretched className="portfolio-item">
-          <Grid.Column>
+          <Grid.Column only="tablet computer">
             <div
               style={{
+                backgroundImage: `url(${require("../assets/products/muvr.png")})`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
                 height: "25rem",
                 width: "100%",
-                backgroundImage: `url(${require("../assets/stock/accident.jpg")})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center center"
               }}
             />
           </Grid.Column>
           <Grid.Column>
             <Header as="h1">
-              Muvr: Medical Wareables for Post-Operation Recovery
+              Muvr: Medical Wearables for Post-Operation Recovery
             </Header>
             <p>
               Muvr’s proprietary wearable sensors enable real-time joint motion
@@ -111,31 +262,34 @@ const IndexPage = (props: LayoutProps) => (
               actionable insights.
             </p>
             <p>
-              Nanophonics developed calibration algorithms - a prerequisite for
-              the Muvr's gyroscope senzors to provide punctual data.
+              Nanophonics helped finetune signal processing algorithms in order
+              to improve patient recovery rate.
             </p>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row stretched className="portfolio-item">
           <Grid.Column>
-            <Header as="h1">NDA - Gas and Oil company</Header>
+            <Header as="h1">Flowcommand</Header>
             <p>
-              <b>Developing an App for partner in the machining space</b>
-              <ul>
-                <li>DSP</li>
-                <li>Machine Learning</li>
-                <li>iOS</li>
-              </ul>
+              FlowCommand ​is a full service technology company that provides
+              software and hardware for oil &amp; gas companies. FlowCommand’s
+              mission statement is simple: r​educe risks and costs by using
+              expertly architected breakthrough technology​.
+            </p>
+            <p>
+              Our company helped with the velocity tracking and prediction
+              technology through the knowledge of signal processing and
+              algorithms.
             </p>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column only="tablet computer">
             <div
               style={{
+                backgroundImage: `url(${require("../assets/stock/oil.jpg")})`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
                 height: "25rem",
                 width: "100%",
-                backgroundImage: `url(${require("../assets/stock/oil.jpg")})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center center"
               }}
             />
           </Grid.Column>
@@ -148,7 +302,6 @@ const IndexPage = (props: LayoutProps) => (
       <Grid
         columns="3"
         textAlign="center"
-        divided
         relaxed
         stackable
         className="container"
@@ -162,15 +315,15 @@ const IndexPage = (props: LayoutProps) => (
           <Grid.Column textAlign="left">
             <Header as="h2">
               Ivan Vican
-              <Header.Subheader>CEO</Header.Subheader>
+              <Header.Subheader>Senior Algorithms Engineer</Header.Subheader>
             </Header>
             <div
               style={{
+                backgroundImage: `url(${require("../assets/team/ivan-vican-3.jpg")})`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
                 height: "35rem",
                 width: "100%",
-                backgroundImage: `url(${require("../assets/team/ivan-vican-3.jpg")})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center center"
               }}
             />
             <p style={{ marginTop: "1rem" }}>
@@ -183,19 +336,19 @@ const IndexPage = (props: LayoutProps) => (
           <Grid.Column textAlign="left">
             <Header as="h2">
               Ivan Fabijanović
-              <Header.Subheader>CTO</Header.Subheader>
+              <Header.Subheader>Senior Mobile Engineer</Header.Subheader>
             </Header>
             <div
               style={{
+                backgroundImage: `url(${require("../assets/team/ivan-fabijanovic-2.jpg")})`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
                 height: "35rem",
                 width: "100%",
-                backgroundImage: `url(${require("../assets/team/ivan-fabijanovic-2.jpg")})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center center"
               }}
             />
             <p style={{ marginTop: "1rem" }}>
-              Senior Software Engineer specialised in iOS development.
+              Senior Software Engineer specialized in iOS development.
               Specializing in mobile and web applications, reactive programming,
               computer graphics and blockchain/crypto.
             </p>
@@ -203,29 +356,26 @@ const IndexPage = (props: LayoutProps) => (
           <Grid.Column textAlign="left">
             <Header as="h2">
               Fabijan Žunić
-              <Header.Subheader>DSP Engineer</Header.Subheader>
+              <Header.Subheader>Junior Audio Engineer</Header.Subheader>
             </Header>
             <div
               style={{
+                backgroundImage: `url(${require("../assets/team/fabijan-zunic.png")})`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
                 height: "35rem",
                 width: "100%",
-                opacity: 0.3,
-                backgroundImage: `url(${require("../assets/team/ivan-vican-3.jpg")})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center center"
               }}
             />
             <p style={{ marginTop: "1rem" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Junior software engineer specialized in audio and DSP. Half time
+              music producer and audio engineer with interest in room acoustics.
             </p>
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </Segment>
-    <Segment vertical className="stripe feature">
+    <Segment vertical className="stripe">
       <Contact />
     </Segment>
   </div>

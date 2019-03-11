@@ -2,19 +2,18 @@ import { Link } from "gatsby";
 import * as React from "react";
 import HeaderMenu from "./HeaderMenu/HeaderMenu";
 import SidebarMenu from "./SidebarMenu/SidebarMenu";
-import { Segment, Icon, Container, Sidebar } from "semantic-ui-react";
-import "../css/styles.css";
+import { Segment, Icon, Container, Sidebar, Grid } from "semantic-ui-react";
 import "../css/responsive.css";
 import "../css/semantic.min.css";
 import "../css/styles-post.css";
+import "../css/styles.css";
 import "prismjs/themes/prism-okaidia.css";
 import { Provider } from "react-redux";
 import { store } from "../store";
 
 export const menuItems = [
-  // { name: "Home", path: "/", exact: true, icon: "home", inverted: true },
-  // { name: "About", path: "/about/", exact: true, icon: "info circle" },
-  // { name: "Blog", path: "/blog/", exact: false, icon: "newspaper" }
+  { name: "Home", path: "/", exact: true, icon: "home", inverted: true },
+  { name: "About", path: "/about/", exact: true, icon: "info circle" },
 ];
 
 export interface LayoutProps {
@@ -45,18 +44,63 @@ const Layout = (props: LayoutProps) => {
           )}
 
           {/* Render children pages */}
-          <div style={{ paddingBottom: 60 }}>{props.children}</div>
+          <div style={{ paddingBottom: 300 }}>{props.children}</div>
 
           {/* Footer */}
           <Segment
             inverted
             vertical
-            style={{ position: "absolute", bottom: 0, width: "100%" }}
+            style={{
+              background: "#000",
+              bottom: 0,
+              position: "absolute",
+              width: "100%",
+            }}
           >
             <Container textAlign="center">
               <p>
-                Powered with <Icon name="heart" /> by Gatsby 2.0
+                Powered with <Icon name="heart" color="red" /> by Gatsby 2.0
               </p>
+              <Grid columns="2" textAlign="left" style={{ color: "#AAA" }}>
+                <Grid.Row>
+                  <Grid.Column width="16" textAlign="center">
+                    <p>
+                      NANOPHONICS - obrt za računalne djelatnosti i druge
+                      poslovne usluge, vl. Ivan Vican
+                      <br />
+                      Horvaćanska 17A, 10000 Zagreb
+                    </p>
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row centered>
+                  <Grid.Column tablet={8} computer={4}>
+                    <p>
+                      <span style={{ color: "#6C6C6C" }}>mob: </span>098/628-628
+                      <br />
+                      <span style={{ color: "#6C6C6C" }}>email: </span>
+                      info@nanophonics.com
+                      <br />
+                      <span style={{ color: "#6C6C6C" }}>OIB: </span>23307025262
+                      <br />
+                      <span style={{ color: "#6C6C6C" }}>MB: </span>97831280
+                    </p>
+                  </Grid.Column>
+                  <Grid.Column tablet={8} computer={4}>
+                    <p>
+                      <span style={{ color: "#6C6C6C" }}>ŽR: </span>
+                      2340009-1160504279 (PBZ)
+                      <br />
+                      <span style={{ color: "#6C6C6C" }}>IBAN: </span>HR47 2340
+                      0091 1605 0427 9<br />
+                      PRIVREDNA BANKA ZAGREB D.D. 10000 ZAGREB, Račkoga 6,
+                      Croatia
+                      <br />
+                      <span style={{ color: "#6C6C6C" }}>SWIFT CODE: </span>
+                      PBZGHR2X
+                    </p>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
             </Container>
           </Segment>
         </Sidebar.Pusher>

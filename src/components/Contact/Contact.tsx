@@ -1,37 +1,32 @@
 import * as React from "react";
-import { navigateTo } from "gatsby";
+import classnames from "classnames";
 import { default as ReCAPTCHA } from "react-google-recaptcha";
 import * as validate from "validate.js";
 import { isEmpty } from "lodash";
-import {
-  Grid,
-  Header,
-  Form,
-  Button,
-  Container,
-  Message
-} from "semantic-ui-react";
+import { Grid, Header, Button, Container, Icon } from "semantic-ui-react";
 
 const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
 
 function encode(data: any) {
   return Object.keys(data)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
     .join("&");
 }
 
 type ContactProps = {};
 type ContactState = {
-  isValid: boolean;
-  errors: {
-    [key: string]: string;
-  };
-  visited: {
-    [key: string]: boolean;
-  };
-  showValidation: boolean;
   constraints: any;
+  contactMeByFax: string;
+  email: string;
+  errors: { [key: string]: string };
   gRecaptchaResponse: any;
+  isValid: boolean;
+  message: string;
+  name: string;
+  showValidation: boolean;
+  subject: string;
+  thanksVisible: boolean;
+  visited: { [key: string]: boolean };
 };
 
 export default class Contact extends React.Component<
@@ -39,92 +34,143 @@ export default class Contact extends React.Component<
   ContactState
 > {
   state: ContactState = {
-    gRecaptchaResponse: "",
-    isValid: true,
-    errors: {},
-    visited: {},
-    showValidation: false,
     constraints: {
-      name: {
-        presence: true
-      },
       email: {
         email: true,
-        presence: true
-      },
-      subject: {
-        presence: true
+        presence: { allowEmpty: false },
       },
       message: {
-        presence: true
-      }
-    }
+        presence: { allowEmpty: false },
+      },
+      name: {
+        presence: { allowEmpty: false },
+      },
+      subject: {
+        presence: { allowEmpty: false },
+      },
+    },
+    contactMeByFax: "",
+    email: "",
+    errors: {},
+    gRecaptchaResponse: "",
+    isValid: true,
+    message: "",
+    name: "",
+    showValidation: false,
+    subject: "",
+    thanksVisible: false,
+    visited: {},
   };
 
   handleChange = (
-    e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { constraints } = this.state;
     const formInput = e.target as HTMLInputElement;
     const state = { ...this.state, [formInput.name]: formInput.value };
     const errors = validate(state, constraints);
+    console.log("validation: ", errors);
     this.setState({ ...state, errors, isValid: isEmpty(errors) });
-  };
+  }
 
   handleBlur = (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { visited, constraints } = this.state;
-    const formInput = e.target as HTMLInputElement;
+    const formInput =
+      (e.target as HTMLInputElement) || (e.target as HTMLTextAreaElement);
+
+    console.log(visited, formInput.name);
+    console.log(formInput);
 
     const state = {
       ...this.state,
       visited: {
         ...visited,
-        [formInput.name]: true
-      }
+        [formInput.name]: true,
+      },
     };
     const errors = validate(state, constraints);
     this.setState({ ...state, errors, isValid: isEmpty(errors) });
-  };
+    console.log("blur alterState: ", state);
+    console.log("blur state: ", this.state);
+  }
 
   handleRecaptcha = (value: any) => {
     this.setState({ gRecaptchaResponse: value });
-  };
+  }
 
   handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { state } = this;
     const { constraints } = this.state;
     const errors = validate(state, constraints);
+
     this.setState({
       ...state,
       errors,
       isValid: isEmpty(errors),
-      showValidation: true
+      showValidation: true,
     });
-    if (!isEmpty(errors)) return;
+
+    if (!isEmpty(errors)) {
+      return;
+    }
 
     const form = e.target as HTMLFormElement;
     fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state
-      })
+        "contactMeByFax": this.state.contactMeByFax,
+        "email": this.state.email,
+        "form-name": "contact",
+        "g-recaptcha-response": this.state.gRecaptchaResponse,
+        "message": this.state.message,
+        "name": this.state.name,
+        "subject": this.state.subject,
+      }),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      method: "POST",
     })
-      .then(() => {
-        const to = form.getAttribute("action");
-        navigateTo(to);
+      .then((r) => {
+        this.setState({
+          contactMeByFax: "",
+          email: "",
+          errors: {},
+          message: "",
+          name: "",
+          subject: "",
+          thanksVisible: true,
+          visited: {},
+        });
       })
-      .catch(alert);
-  };
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  toggleThanks = () => {
+    this.setState({ thanksVisible: false });
+  }
 
   render() {
-    const { gRecaptchaResponse, errors, visited, showValidation } = this.state;
+    const {
+      contactMeByFax,
+      email,
+      errors,
+      gRecaptchaResponse,
+      isValid,
+      message,
+      name,
+      showValidation,
+      subject,
+      thanksVisible,
+      visited,
+    } = this.state;
+    const gRecaptchaSuccess = gRecaptchaResponse;
+
+    console.log(errors);
 
     return (
       <Container>
-        <Grid columns="2">
+        <Grid stackable centered doubling columns="2">
           <Grid.Row>
             <Grid.Column>
               <Header as="h2">Contact Us</Header>
@@ -132,96 +178,212 @@ export default class Contact extends React.Component<
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Header>
-                Address
-                <Header.Subheader>Adresa</Header.Subheader>
-              </Header>
-              <Header>
-                Email
-                <Header.Subheader>Email</Header.Subheader>
-              </Header>
-            </Grid.Column>
-            <Grid.Column>
-              <Form
+              <form
+                className="ui form contactForm"
+                data-netlify-honeypot="contactMeByFax"
                 data-netlify-recaptcha="true"
-                action="/thanks"
-                className="contactForm"
-                name="contact"
-                method="POST"
                 data-netlify="true"
-                netlify-honeypot="bot-field"
+                method="POST"
+                name="contact"
+                onSubmit={this.handleSubmit}
+                noValidate
               >
-                <Form.Field hidden>
-                  <label>{`Don’t fill this out if you're human: `}</label>
-                  <input name="bot-field" placeholder="First Name" />
-                </Form.Field>
-
-                <Form.Input
-                  error={Boolean(
-                    (visited.name || showValidation) && errors.name
-                  )}
-                  label="Name"
-                  placeholder="Your Name"
-                  type="input"
-                  onChange={this.handleChange}
-                  onBlur={this.handleBlur}
-                  required
-                />
-                <div className="validation">
-                  {(visited.name || showValidation) &&
-                    errors.name &&
-                    errors.name[0]}
+                {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+                <input type="hidden" name="form-name" value="contact" />
+                <div className="required field" style={{ display: "none" }}>
+                  <label>Contact me by fax</label>
+                  <div className="ui input">
+                    <input
+                      type="input"
+                      name="contactMeByFax"
+                      placeholder="Fax Number"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      value={contactMeByFax}
+                      required
+                    />
+                  </div>
                 </div>
-                <Form.Input
-                  error={Boolean(
-                    (visited.name || showValidation) && errors.name
-                  )}
-                  label="Email"
-                  placeholder="your@email.com"
-                  type="email"
-                  onChange={this.handleChange}
-                  onBlur={this.handleBlur}
-                  required
-                />
-                <div className="validation">
-                  {(visited.email || showValidation) &&
-                    errors.email &&
-                    errors.email[0]}
+                <div
+                  className={classnames({
+                    error: Boolean(
+                      (visited.name || showValidation) && errors && errors.name,
+                    ),
+                    field: true,
+                    required: true,
+                  })}
+                >
+                  <label>Name</label>
+                  <div className="ui input" style={{ flexDirection: "column" }}>
+                    <input
+                      type="input"
+                      name="name"
+                      placeholder="Your Name"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      value={name}
+                      required
+                    />
+                    <div className="validation" style={{ marginTop: "0.5rem" }}>
+                      {(visited.name || showValidation) &&
+                        errors &&
+                        errors.name &&
+                        errors.name[0]}
+                    </div>
+                  </div>
                 </div>
-                <Form.Input
-                  label="Subject"
-                  name="subject"
-                  placeholder="Message subject"
-                  onChange={this.handleChange}
-                  onBlur={this.handleBlur}
-                  required
-                />
-                <div className="validation">
-                  {(visited.subject || showValidation) &&
-                    errors.subject &&
-                    errors.subject[0]}
+                <div
+                  className={classnames({
+                    error: Boolean(
+                      (visited.email || showValidation) &&
+                        errors &&
+                        errors.email,
+                    ),
+                    field: true,
+                    required: true,
+                  })}
+                >
+                  <label>Email</label>
+                  <div className="ui input" style={{ flexDirection: "column" }}>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="your@email.com"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      value={email}
+                      required
+                    />
+                    <div className="validation" style={{ marginTop: "0.5rem" }}>
+                      {(visited.email || showValidation) &&
+                        errors &&
+                        errors.email &&
+                        errors.email[0]}
+                    </div>
+                  </div>
                 </div>
-                <Form.TextArea
-                  label="Message"
-                  rows={5}
-                  name="message"
-                  placeholder="Message"
-                  onChange={this.handleChange}
-                  onBlur={this.handleBlur}
-                  required
-                />
-                <div className="validation">
-                  {(visited.message || showValidation) &&
-                    errors.message &&
-                    errors.message[0]}
+                <div
+                  className={classnames({
+                    error: Boolean(
+                      (visited.subject || showValidation) &&
+                        errors &&
+                        errors.subject,
+                    ),
+                    field: true,
+                    required: true,
+                  })}
+                >
+                  <label>Subject</label>
+                  <div className="ui input" style={{ flexDirection: "column" }}>
+                    <input
+                      type="input"
+                      name="subject"
+                      placeholder="Subject"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      value={subject}
+                      required
+                    />
+                    <div className="validation" style={{ marginTop: "0.5rem" }}>
+                      {(visited.subject || showValidation) &&
+                        errors &&
+                        errors.subject &&
+                        errors.subject[0]}
+                    </div>
+                  </div>
                 </div>
-                <div data-netlify-recaptcha="true" />
-                <Button primary type="submit">
+                <div
+                  className={classnames({
+                    error: Boolean(
+                      (visited.message || showValidation) &&
+                        errors &&
+                        errors.message,
+                    ),
+                    field: true,
+                    required: true,
+                  })}
+                >
+                  <label>Message</label>
+                  <div className="ui input" style={{ flexDirection: "column" }}>
+                    <textarea
+                      rows={5}
+                      name="message"
+                      placeholder="Your Message"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      value={message}
+                      required
+                    />
+                    <div className="validation" style={{ marginTop: "0.5rem" }}>
+                      {(visited.message || showValidation) &&
+                        errors &&
+                        errors.message &&
+                        errors.message[0]}
+                    </div>
+                  </div>
+                </div>
+                <div className="field">
+                  <ReCAPTCHA
+                    ref="recaptcha"
+                    sitekey={RECAPTCHA_KEY}
+                    onChange={this.handleRecaptcha}
+                  />
+                </div>
+                <Button
+                  disabled={!gRecaptchaResponse || !isValid}
+                  primary
+                  type="submit"
+                >
                   Submit
                 </Button>
-              </Form>
+              </form>
             </Grid.Column>
           </Grid.Row>
+          {thanksVisible && (
+            <div
+              style={{
+                alignItems: "center",
+                backgroundColor: "white",
+                bottom: 0,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                left: 0,
+                position: "absolute",
+                right: 0,
+                textAlign: "left",
+                top: 0,
+              }}
+            >
+              <div style={{ maxWidth: 500 }}>
+                <Button
+                  style={{
+                    float: "right",
+                    marginTop: "calc(2rem - .14285714em)",
+                  }}
+                  color="black"
+                  inverted
+                  icon
+                  basic
+                  onClick={this.toggleThanks}
+                >
+                  <Icon color="black" name="x" />
+                </Button>
+                <Header as="h2">Thank you for getting in touch!</Header>
+                <p>
+                  We appreciate you contacting us. One of our team members will
+                  be getting back to you shortly.
+                </p>
+                <p>
+                  While we do our best to answer your queries quickly, it may
+                  take a day or two to receive a response from us during peak
+                  days.
+                </p>
+                <p>Thanks in advance for your patience.</p>
+                <p>Have a great day!</p>
+              </div>
+            </div>
+          )}
         </Grid>
       </Container>
     );
