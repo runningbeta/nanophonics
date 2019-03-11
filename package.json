@@ -51,7 +51,7 @@
     "gatsby-remark-images": "next",
     "gatsby-remark-prismjs": "next",
     "gatsby-source-filesystem": "^2.0.21",
-    "gatsby-transformer-json": "next",
+    "gatsby-transformer-json": "^2.1.10",
     "gatsby-transformer-remark": "next",
     "gatsby-transformer-sharp": "^2.1.13",
     "graphql-code-generator": "^0.16.1",
