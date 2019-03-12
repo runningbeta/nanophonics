@@ -131,8 +131,18 @@ export default class Contact extends React.Component<
       method: "POST",
     })
       .then((r) => {
-        const { email, message } = this.state;
-        trackEvent("Contact Form", "Submit", email, message);
+        const { name, message } = this.state;
+        trackEvent("Contact Form", "Submit", name, message);
+        this.setState({
+          contactMeByFax: "",
+          email: "",
+          errors: {},
+          message: "",
+          name: "",
+          subject: "",
+          thanksVisible: true,
+          visited: {},
+        });
       })
       .catch((err) => {
         console.log(err);
