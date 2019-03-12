@@ -5,12 +5,12 @@ declare global {
   }
 }
 
-export default function trackEvent(
+const trackEvent = (
   eventCategory: string,
   eventAction: string,
   eventLabel: string,
   eventValue: any,
-) {
+) => {
   if (window.ga) {
     window.ga("send", "event", {
       eventCategory,
@@ -21,4 +21,6 @@ export default function trackEvent(
   }
 
   return false;
-}
+};
+
+export default trackEvent;
