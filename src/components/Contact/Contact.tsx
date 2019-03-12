@@ -70,7 +70,6 @@ export default class Contact extends React.Component<
     const formInput = e.target as HTMLInputElement;
     const state = { ...this.state, [formInput.name]: formInput.value };
     const errors = validate(state, constraints);
-    console.log("validation: ", errors);
     this.setState({ ...state, errors, isValid: isEmpty(errors) });
   }
 
@@ -78,9 +77,6 @@ export default class Contact extends React.Component<
     const { visited, constraints } = this.state;
     const formInput =
       (e.target as HTMLInputElement) || (e.target as HTMLTextAreaElement);
-
-    console.log(visited, formInput.name);
-    console.log(formInput);
 
     const state = {
       ...this.state,
@@ -91,8 +87,6 @@ export default class Contact extends React.Component<
     };
     const errors = validate(state, constraints);
     this.setState({ ...state, errors, isValid: isEmpty(errors) });
-    console.log("blur alterState: ", state);
-    console.log("blur state: ", this.state);
   }
 
   handleRecaptcha = (value: any) => {
@@ -145,7 +139,7 @@ export default class Contact extends React.Component<
         });
       })
       .catch((err) => {
-        console.log(err);
+        return;
       });
   }
 
@@ -167,9 +161,6 @@ export default class Contact extends React.Component<
       thanksVisible,
       visited,
     } = this.state;
-    const gRecaptchaSuccess = gRecaptchaResponse;
-
-    console.log(errors);
 
     return (
       <Container>
