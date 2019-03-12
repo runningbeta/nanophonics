@@ -4,6 +4,7 @@ import { default as ReCAPTCHA } from "react-google-recaptcha";
 import * as validate from "validate.js";
 import { isEmpty } from "lodash";
 import { Grid, Header, Button, Container, Icon } from "semantic-ui-react";
+import trackEvent from "../../analytics/trackEvent";
 
 const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY;
 
@@ -130,16 +131,8 @@ export default class Contact extends React.Component<
       method: "POST",
     })
       .then((r) => {
-        this.setState({
-          contactMeByFax: "",
-          email: "",
-          errors: {},
-          message: "",
-          name: "",
-          subject: "",
-          thanksVisible: true,
-          visited: {},
-        });
+        const { email, message } = this.state;
+        trackEvent("Contact Form", "Submit", email, message);
       })
       .catch((err) => {
         console.log(err);
