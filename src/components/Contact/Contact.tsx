@@ -188,7 +188,7 @@ export default class Contact extends React.Component<
                   <label>Contact me by fax</label>
                   <div className="ui input">
                     <input
-                      type="input"
+                      type="text"
                       name="contactMeByFax"
                       placeholder="Fax Number"
                       onBlur={this.handleBlur}
@@ -210,7 +210,7 @@ export default class Contact extends React.Component<
                   <label>Name</label>
                   <div className="ui input" style={{ flexDirection: "column" }}>
                     <input
-                      type="input"
+                      type="text"
                       name="name"
                       placeholder="Your Name"
                       onBlur={this.handleBlur}
@@ -270,7 +270,7 @@ export default class Contact extends React.Component<
                   <label>Subject</label>
                   <div className="ui input" style={{ flexDirection: "column" }}>
                     <input
-                      type="input"
+                      type="text"
                       name="subject"
                       placeholder="Subject"
                       onBlur={this.handleBlur}
