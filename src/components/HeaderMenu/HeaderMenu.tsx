@@ -17,19 +17,19 @@ export const HeaderMenu = ({
   inverted,
   dispatch,
 }: HeaderMenuProps) => (
-  <Container>
-    <Menu size="large" pointing secondary inverted={inverted}>
-      <Menu.Item
+    <Container>
+      <Menu size="large" pointing secondary inverted={inverted}>
+        {/* <Menu.Item
         as="a"
         className="mobile only"
         icon="sidebar"
         onClick={() => dispatch && dispatch(toggleSidebar())}
-      />
-      <Menu.Item as="a" href="/" className="mobile hidden">
-        {/* <Icon name="spy" size="big" /> */}
-        nanophonics
+      /> */}
+        <Menu.Item as="a" href="/" className="mobile hidden">
+          {/* <Icon name="spy" size="big" /> */}
+          nanophonics
       </Menu.Item>
-      {/* {items.map(item => {
+        {/* {items.map(item => {
         const active = item.exact
           ? pathname === item.path
           : pathname.startsWith(item.path);
@@ -44,8 +44,8 @@ export const HeaderMenu = ({
           />
         );
       })} */}
-    </Menu>
-  </Container>
-);
+      </Menu>
+    </Container>
+  );
 
 export default connect()(HeaderMenu);
