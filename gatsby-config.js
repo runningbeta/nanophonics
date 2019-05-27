@@ -60,7 +60,8 @@ module.exports = {
         start_url: '/',
         background_color: '#f7f7f7',
         theme_color: '#191919',
-        display: 'minimal-ui'
+        display: 'minimal-ui',
+        icon: 'static/apple-touch-icon.png' // This path is relative to the root of the site.
       }
     },
     /* eslint-enable camelcase */
