@@ -300,18 +300,23 @@ const IndexPage = (props: LayoutProps) => (
     {/* Key features */}
     <Segment vertical className="stripe alternate">
       <Grid
-        columns="3"
-        textAlign="center"
-        relaxed
-        stackable
         className="container"
       >
-        <Grid.Row>
-          <Grid.Column width="16" textAlign="left">
+        <Grid.Row columns="1">
+          <Grid.Column textAlign="left">
             <Header as="h1">Team</Header>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
+      </Grid>
+      <Grid
+        columns="4"
+        textAlign="center"
+        doubling={true}
+        relaxed={true}
+        stackable={true}
+        className="container"
+      >
+        <Grid.Row >
           <Grid.Column textAlign="left">
             <Header as="h2">
               Ivan Vican
@@ -329,8 +334,11 @@ const IndexPage = (props: LayoutProps) => (
             <p style={{ marginTop: "1rem" }}>
               Senior Signal Processing and Algorithms Engineer with interests
               and experience in several domains (biomedicine, acoustics, sensors
-              and IoT). Currently working as a freelance consultant in several
-              fields concerning Audio applications and DSP algorithms.
+              and IoT).
+            </p>
+            <p>
+              Freelance consultant in several fields concerning Audio
+              applications and DSP algorithms.
             </p>
           </Grid.Column>
           <Grid.Column textAlign="left">
@@ -349,6 +357,8 @@ const IndexPage = (props: LayoutProps) => (
             />
             <p style={{ marginTop: "1rem" }}>
               Senior Software Engineer specialized in iOS development.
+            </p>
+            <p>
               Specializing in mobile and web applications, reactive programming,
               computer graphics and blockchain/crypto.
             </p>
@@ -360,7 +370,7 @@ const IndexPage = (props: LayoutProps) => (
             </Header>
             <div
               style={{
-                backgroundImage: `url(${require("../assets/team/fabijan-zunic.png")})`,
+                backgroundImage: `url(${require("../assets/team/fabijan-zunic.jpg")})`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
                 height: "35rem",
@@ -368,8 +378,34 @@ const IndexPage = (props: LayoutProps) => (
               }}
             />
             <p style={{ marginTop: "1rem" }}>
-              Junior software engineer specialized in audio and DSP. Half time
+              Junior Software Engineer specialized in audio and DSP.
+            </p>
+            <p>
+              Half time
               music producer and audio engineer with interest in room acoustics.
+            </p>
+          </Grid.Column>
+          <Grid.Column textAlign="left">
+            <Header as="h2">
+              Maša Burda
+              <Header.Subheader>Junior Mobile Engineer</Header.Subheader>
+            </Header>
+            <div
+              style={{
+                backgroundImage: `url(${require("../assets/team/masa_burda.jpg")})`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
+                height: "35rem",
+                width: "100%",
+              }}
+            />
+            <p style={{ marginTop: "1rem" }}>
+              Junior Software Engineer with experience in iOS mobile applications
+              and machine learning.
+            </p>
+            <p>
+              Primarily focused on developing multipurpose
+              mobile applications. Other interests include embedded systems and IoT.
             </p>
           </Grid.Column>
         </Grid.Row>
@@ -378,7 +414,7 @@ const IndexPage = (props: LayoutProps) => (
     <Segment vertical className="stripe">
       <Contact />
     </Segment>
-  </div>
+  </div >
 );
 
 export default withLayout(IndexPage);
