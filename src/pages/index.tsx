@@ -1,35 +1,52 @@
 import * as React from "react";
-import { Link } from "gatsby";
-import HeaderMenu from "../components/HeaderMenu/HeaderMenu";
+// import { Link } from "gatsby";
+// import HeaderMenu from "../components/HeaderMenu/HeaderMenu";
 import { withLayout, LayoutProps, menuItems } from "../components/Layout";
 import Contact from "../components/Contact/Contact";
 import {
-  Segment,
+  Button,
+  Card,
   Container,
   Grid,
   Header,
-  Card,
-  Button,
   Icon,
+  Segment,
+  Responsive,
 } from "semantic-ui-react";
 
 const IndexPage = (props: LayoutProps) => (
   <div>
     {/* Master head */}
     <Segment vertical inverted textAlign="center" className="masthead">
-      <HeaderMenu
+      {/* <HeaderMenu
         Link={Link}
         pathname={props.location.pathname}
         items={menuItems}
         inverted
-      />
+      /> */}
       <Container text>
+        <Header inverted as="h2">
+          NANOPHONICS
+          </Header>
         <Header inverted as="h1">
           AI powered mobile apps
         </Header>
-        <Header inverted as="h2">
-          Signal Processing | Machine Learning | Mobile Apps
-        </Header>
+        <Responsive as={React.Fragment} maxWidth={Responsive.onlyMobile.maxWidth} >
+          <Header style={{ margin: "4rem 0 0.5rem" }} className="only mobile" inverted as="h3">
+            Signal Processing
+            </Header>
+          <Header style={{ margin: "0.5rem 0" }} className="only mobile" inverted as="h3">
+            Machine Learning
+            </Header>
+          <Header style={{ margin: "0.5rem 0" }} className="only mobile" inverted as="h3">
+            Mobile Apps
+            </Header>
+        </Responsive>
+        <Responsive as={React.Fragment} minWidth={Responsive.onlyMobile.maxWidth} >
+          <Header className="only mobile" inverted as="h3">
+            Signal Processing | Machine Learning | Mobile Apps
+            </Header>
+        </Responsive>
         {/* <Button
           style={{ marginTop: "3rem" }}
           basic

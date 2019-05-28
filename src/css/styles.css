@@ -15,16 +15,24 @@
   margin-left: 0.5em;
 }
 
-.masthead h1.ui.header {
-  margin-top: 3em;
-  margin-bottom: 0;
-  font-size: 4em;
-  font-weight: normal;
+.masthead .ui.header {
+  font-weight: 300;
 }
 
-.masthead h2 {
-  font-size: 1.7em;
-  font-weight: normal;
+.masthead h1.ui.header {
+  margin: 1em 0;
+  font-size: 4rem;
+}
+
+.masthead h2.ui.header {
+  margin-top: 3em;
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+}
+
+.masthead h3.ui.header {
+  font-size: 1.7rem;
+  letter-spacing: 0.1rem;
 }
 
 .ui.vertical.stripe {
@@ -81,11 +89,19 @@
   .masthead h1.ui.header {
     font-size: 2em;
     margin-top: 1.5em;
+    font-weight: 300;
   }
 
-  .masthead h2 {
-    margin-top: 0.5em;
-    font-size: 1.5em;
+  .masthead h2.ui.header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 2.5rem;
+    letter-spacing: 0.25rem;
+    font-weight: 300;
+  }
+
+  .masthead h3.ui.header {
+    font-weight: 300;
   }
 }
 
