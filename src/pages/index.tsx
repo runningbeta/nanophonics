@@ -380,7 +380,7 @@ const IndexPage = (props: LayoutProps) => (
               computer graphics and blockchain/crypto.
             </p>
           </Grid.Column>
-          <Grid.Column textAlign="left">
+          {/* <Grid.Column textAlign="left">
             <Header as="h2">
               Fabijan Žunić
               <Header.Subheader>Junior Audio Engineer</Header.Subheader>
@@ -400,6 +400,27 @@ const IndexPage = (props: LayoutProps) => (
             <p>
               Half time
               music producer and audio engineer with interest in room acoustics.
+            </p>
+          </Grid.Column> */}
+          <Grid.Column textAlign="left">
+            <Header as="h2">
+              Duje Mušura
+              <Header.Subheader>Junior DSP / Data Science Engineer</Header.Subheader>
+            </Header>
+            <div
+              style={{
+                backgroundImage: `url(${require("../assets/team/duje-musura.jpg")})`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
+                height: "35rem",
+                width: "100%",
+              }}
+            />
+            <p style={{ marginTop: "1rem" }}>
+              Junior software engineer specialised in DSP with experience in embedded systems and IoT.
+            </p>
+            <p>
+              Interested in machine learning, electronics and music production.
             </p>
           </Grid.Column>
           <Grid.Column textAlign="left">

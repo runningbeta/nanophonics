@@ -65,10 +65,9 @@ const Layout = (props: LayoutProps) => {
                 <Grid.Row>
                   <Grid.Column width="16" textAlign="center">
                     <p>
-                      NANOPHONICS - obrt za računalne djelatnosti i druge
-                      poslovne usluge, vl. Ivan Vican
+                      Final Fantasy d.o.o.
                       <br />
-                      Horvaćanska 17A, 10000 Zagreb
+                      Kralja Zvonimira 56, 21260 Imotski
                     </p>
                   </Grid.Column>
                 </Grid.Row>
@@ -80,18 +79,15 @@ const Layout = (props: LayoutProps) => {
                       <span style={{ color: "#6C6C6C" }}>email: </span>
                       info@nanophonics.com
                       <br />
-                      <span style={{ color: "#6C6C6C" }}>OIB: </span>23307025262
+                      <span style={{ color: "#6C6C6C" }}>OIB: </span>25525283790
                       <br />
-                      <span style={{ color: "#6C6C6C" }}>MB: </span>97831280
+                      <span style={{ color: "#6C6C6C" }}>MB: </span>05135052
                     </p>
                   </Grid.Column>
                   <Grid.Column tablet={8} computer={4}>
                     <p>
-                      <span style={{ color: "#6C6C6C" }}>ŽR: </span>
-                      2340009-1160504279 (PBZ)
-                      <br />
-                      <span style={{ color: "#6C6C6C" }}>IBAN: </span>HR47 2340
-                      0091 1605 0427 9<br />
+                      <span style={{ color: "#6C6C6C" }}>IBAN: </span>
+                      HR05 2340 0091 1110 2543 2<br />
                       PRIVREDNA BANKA ZAGREB D.D. 10000 ZAGREB, Račkoga 6,
                       Croatia
                       <br />
