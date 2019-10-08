@@ -405,7 +405,7 @@ const IndexPage = (props: LayoutProps) => (
           <Grid.Column textAlign="left">
             <Header as="h2">
               Duje Mušura
-              <Header.Subheader>Junior DSP / Data Science Engineer</Header.Subheader>
+              <Header.Subheader>DSP / Data Science Engineer</Header.Subheader>
             </Header>
             <div
               style={{
@@ -426,7 +426,7 @@ const IndexPage = (props: LayoutProps) => (
           <Grid.Column textAlign="left">
             <Header as="h2">
               Maša Burda
-              <Header.Subheader>Junior Mobile Engineer</Header.Subheader>
+              <Header.Subheader>Mobile Engineer</Header.Subheader>
             </Header>
             <div
               style={{
