@@ -205,7 +205,7 @@ const IndexPage = (props: LayoutProps) => (
           <Grid.Column only="tablet computer">
             <div
               style={{
-                backgroundImage: `url(${require("../assets/products/shell.jpg")})`,
+                backgroundImage: `url(${require("../assets/products/tyxit.jpg")})`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
                 height: "25rem",
@@ -215,7 +215,7 @@ const IndexPage = (props: LayoutProps) => (
           </Grid.Column>
           <Grid.Column>
             <Header as="h1">
-              Shell by Bellabeat: Listen to Babies Heartbeat using iPhone
+              Tyxit: Ultra low latency online music collaboration
             </Header>
             <p>
               <b>A safe, non-invasive and completely natural way</b> of
@@ -223,8 +223,10 @@ const IndexPage = (props: LayoutProps) => (
               and share the excitement with those you love.
             </p>
             <p>
-              No waves in. Just sound out. Safely listen to your baby’s heart
-              without Doppler technology.
+              Nanophonics engineers have helped to develop novel audio codecs 
+              and adaptive latency handling algorithms in real time. Tyxit 
+              technology ensures best performance even during strong network 
+              interruptions and low data bandwidths.
             </p>
           </Grid.Column>
         </Grid.Row>
@@ -326,7 +328,7 @@ const IndexPage = (props: LayoutProps) => (
         </Grid.Row>
       </Grid>
       <Grid
-        columns="4"
+        columns="3"
         textAlign="center"
         doubling={true}
         relaxed={true}
@@ -380,28 +382,6 @@ const IndexPage = (props: LayoutProps) => (
               computer graphics and blockchain/crypto.
             </p>
           </Grid.Column>
-          {/* <Grid.Column textAlign="left">
-            <Header as="h2">
-              Fabijan Žunić
-              <Header.Subheader>Junior Audio Engineer</Header.Subheader>
-            </Header>
-            <div
-              style={{
-                backgroundImage: `url(${require("../assets/team/fabijan-zunic.jpg")})`,
-                backgroundPosition: "center center",
-                backgroundSize: "cover",
-                height: "35rem",
-                width: "100%",
-              }}
-            />
-            <p style={{ marginTop: "1rem" }}>
-              Junior Software Engineer specialized in audio and DSP.
-            </p>
-            <p>
-              Half time
-              music producer and audio engineer with interest in room acoustics.
-            </p>
-          </Grid.Column> */}
           <Grid.Column textAlign="left">
             <Header as="h2">
               Duje Mušura
@@ -421,29 +401,6 @@ const IndexPage = (props: LayoutProps) => (
             </p>
             <p>
               Interested in machine learning, electronics and music production.
-            </p>
-          </Grid.Column>
-          <Grid.Column textAlign="left">
-            <Header as="h2">
-              Maša Burda
-              <Header.Subheader>Mobile Engineer</Header.Subheader>
-            </Header>
-            <div
-              style={{
-                backgroundImage: `url(${require("../assets/team/masa_burda.jpg")})`,
-                backgroundPosition: "center center",
-                backgroundSize: "cover",
-                height: "35rem",
-                width: "100%",
-              }}
-            />
-            <p style={{ marginTop: "1rem" }}>
-              Junior Software Engineer with experience in iOS mobile applications
-              and machine learning.
-            </p>
-            <p>
-              Primarily focused on developing multipurpose
-              mobile applications. Other interests include embedded systems and IoT.
             </p>
           </Grid.Column>
         </Grid.Row>
