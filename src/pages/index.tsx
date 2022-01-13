@@ -25,27 +25,52 @@ const IndexPage = (props: LayoutProps) => (
         inverted
       /> */}
       <Container text>
-        <Header inverted as="h2">
+        <Header
+          style={{ fontSize: "5rem", fontWeight: "bold", color: "#2C5B8B" }}
+          inverted
+          as="h2"
+        >
           NANOPHONICS
-          </Header>
-        <Header inverted as="h1">
+        </Header>
+        <Header inverted as="h1" style={{ color: "#9cbde0" }}>
           AI powered mobile apps
         </Header>
-        <Responsive as={React.Fragment} maxWidth={Responsive.onlyMobile.maxWidth} >
-          <Header style={{ margin: "4rem 0 0.5rem" }} className="only mobile" inverted as="h3">
+        <Responsive
+          as={React.Fragment}
+          maxWidth={Responsive.onlyMobile.maxWidth}
+        >
+          <Header
+            style={{ margin: "4rem 0 0.5rem", color: "#9cbde0" }}
+            className="only mobile"
+            inverted
+            as="h3"
+          >
             Signal Processing
-            </Header>
-          <Header style={{ margin: "0.5rem 0" }} className="only mobile" inverted as="h3">
+          </Header>
+          <Header
+            style={{ margin: "0.5rem 0", color: "#9cbde0" }}
+            className="only mobile"
+            inverted
+            as="h3"
+          >
             Machine Learning
-            </Header>
-          <Header style={{ margin: "0.5rem 0" }} className="only mobile" inverted as="h3">
+          </Header>
+          <Header
+            style={{ margin: "0.5rem 0", color: "#9cbde0" }}
+            className="only mobile"
+            inverted
+            as="h3"
+          >
             Mobile Apps
-            </Header>
+          </Header>
         </Responsive>
-        <Responsive as={React.Fragment} minWidth={Responsive.onlyMobile.maxWidth} >
+        <Responsive
+          as={React.Fragment}
+          minWidth={Responsive.onlyMobile.maxWidth}
+        >
           <Header className="only mobile" inverted as="h3">
             Signal Processing | Machine Learning | Mobile Apps
-            </Header>
+          </Header>
         </Responsive>
         {/* <Button
           style={{ marginTop: "3rem" }}
@@ -63,15 +88,10 @@ const IndexPage = (props: LayoutProps) => (
       <Container>
         <Grid columns="2" stackable relaxed stretched>
           <Grid.Row>
-            <Grid.Column width="2">
-              <Header as="h1">Services</Header>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
             <Grid.Column>
               <Card fluid>
                 <Card.Content>
-                  <Header as="h2">
+                  <Header as="h2" style={{ color: "#2C5B8B" }}>
                     <Icon name="signal" />
                     Signal Processing &amp; Algorithms
                   </Header>
@@ -92,7 +112,7 @@ const IndexPage = (props: LayoutProps) => (
             <Grid.Column>
               <Card fluid>
                 <Card.Content>
-                  <Header as="h2">
+                  <Header as="h2" style={{ color: "#2C5B8B" }}>
                     <Icon name="graduation" />
                     Machine Learning
                   </Header>
@@ -116,7 +136,7 @@ const IndexPage = (props: LayoutProps) => (
             <Grid.Column>
               <Card fluid>
                 <Card.Content>
-                  <Header as="h2">
+                  <Header as="h2" style={{ color: "#2C5B8B" }}>
                     <Icon name="sound" />
                     Audio Development
                   </Header>
@@ -138,7 +158,7 @@ const IndexPage = (props: LayoutProps) => (
             <Grid.Column>
               <Card fluid>
                 <Card.Content>
-                  <Header as="h2">
+                  <Header as="h2" style={{ color: "#2C5B8B" }}>
                     <Icon name="mobile alternate" />
                     Mobile Applications
                   </Header>
@@ -223,9 +243,9 @@ const IndexPage = (props: LayoutProps) => (
               and share the excitement with those you love.
             </p>
             <p>
-              Nanophonics engineers have helped to develop novel audio codecs 
-              and adaptive latency handling algorithms in real time. Tyxit 
-              technology ensures best performance even during strong network 
+              Nanophonics engineers have helped to develop novel audio codecs
+              and adaptive latency handling algorithms in real time. Tyxit
+              technology ensures best performance even during strong network
               interruptions and low data bandwidths.
             </p>
           </Grid.Column>
@@ -318,9 +338,7 @@ const IndexPage = (props: LayoutProps) => (
 
     {/* Key features */}
     <Segment vertical className="stripe alternate">
-      <Grid
-        className="container"
-      >
+      <Grid className="container">
         <Grid.Row columns="1">
           <Grid.Column textAlign="left">
             <Header as="h1">Team</Header>
@@ -335,9 +353,9 @@ const IndexPage = (props: LayoutProps) => (
         stackable={true}
         className="container"
       >
-        <Grid.Row >
+        <Grid.Row>
           <Grid.Column textAlign="left">
-            <Header as="h2">
+            <Header as="h2" style={{ color: "#9cbde0" }}>
               Ivan Vican
               <Header.Subheader>Senior Algorithms Engineer</Header.Subheader>
             </Header>
@@ -346,6 +364,7 @@ const IndexPage = (props: LayoutProps) => (
                 backgroundImage: `url(${require("../assets/team/ivan-vican-3.jpg")})`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
+                borderRadius: "3%",
                 height: "35rem",
                 width: "100%",
               }}
@@ -361,7 +380,7 @@ const IndexPage = (props: LayoutProps) => (
             </p>
           </Grid.Column>
           <Grid.Column textAlign="left">
-            <Header as="h2">
+            <Header as="h2" style={{ color: "#9cbde0" }}>
               Ivan Fabijanović
               <Header.Subheader>Senior Mobile Engineer</Header.Subheader>
             </Header>
@@ -370,6 +389,7 @@ const IndexPage = (props: LayoutProps) => (
                 backgroundImage: `url(${require("../assets/team/ivan-fabijanovic-2.jpg")})`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
+                borderRadius: "3%",
                 height: "35rem",
                 width: "100%",
               }}
@@ -383,7 +403,7 @@ const IndexPage = (props: LayoutProps) => (
             </p>
           </Grid.Column>
           <Grid.Column textAlign="left">
-            <Header as="h2">
+            <Header as="h2" style={{ color: "#9cbde0" }}>
               Duje Mušura
               <Header.Subheader>DSP / Data Science Engineer</Header.Subheader>
             </Header>
@@ -392,12 +412,14 @@ const IndexPage = (props: LayoutProps) => (
                 backgroundImage: `url(${require("../assets/team/duje-musura.jpg")})`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
+                borderRadius: "3%",
                 height: "35rem",
                 width: "100%",
               }}
             />
             <p style={{ marginTop: "1rem" }}>
-              Junior software engineer specialised in DSP with experience in embedded systems and IoT.
+              Senior software engineer specialised in DSP with experience in
+              embedded systems and IoT.
             </p>
             <p>
               Interested in machine learning, electronics and music production.
@@ -409,7 +431,7 @@ const IndexPage = (props: LayoutProps) => (
     <Segment vertical className="stripe">
       <Contact />
     </Segment>
-  </div >
+  </div>
 );
 
 export default withLayout(IndexPage);
