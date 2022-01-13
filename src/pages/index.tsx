@@ -40,7 +40,7 @@ const IndexPage = (props: LayoutProps) => (
           maxWidth={Responsive.onlyMobile.maxWidth}
         >
           <Header
-            style={{ margin: "4rem 0 0.5rem", color: "#9cbde0" }}
+            style={{ margin: "4rem 0 0.5rem", color: "#9cbde0", fontWeight: 400 }}
             className="only mobile"
             inverted
             as="h3"
@@ -48,7 +48,7 @@ const IndexPage = (props: LayoutProps) => (
             Signal Processing
           </Header>
           <Header
-            style={{ margin: "0.5rem 0", color: "#9cbde0" }}
+            style={{ margin: "0.5rem 0", color: "#9cbde0", fontWeight: 400 }}
             className="only mobile"
             inverted
             as="h3"
@@ -56,7 +56,7 @@ const IndexPage = (props: LayoutProps) => (
             Machine Learning
           </Header>
           <Header
-            style={{ margin: "0.5rem 0", color: "#9cbde0" }}
+            style={{ margin: "0.5rem 0", color: "#9cbde0", fontWeight: 400 }}
             className="only mobile"
             inverted
             as="h3"
@@ -355,7 +355,7 @@ const IndexPage = (props: LayoutProps) => (
       >
         <Grid.Row>
           <Grid.Column textAlign="left">
-            <Header as="h2" style={{ color: "#9cbde0" }}>
+            <Header as="h2" style={{ color: "#2C5B8B" }}>
               Ivan Vican
               <Header.Subheader>Senior Algorithms Engineer</Header.Subheader>
             </Header>
@@ -380,7 +380,7 @@ const IndexPage = (props: LayoutProps) => (
             </p>
           </Grid.Column>
           <Grid.Column textAlign="left">
-            <Header as="h2" style={{ color: "#9cbde0" }}>
+            <Header as="h2" style={{ color: "#2C5B8B" }}>
               Ivan Fabijanović
               <Header.Subheader>Senior Mobile Engineer</Header.Subheader>
             </Header>
@@ -403,7 +403,7 @@ const IndexPage = (props: LayoutProps) => (
             </p>
           </Grid.Column>
           <Grid.Column textAlign="left">
-            <Header as="h2" style={{ color: "#9cbde0" }}>
+            <Header as="h2" style={{ color: "#2C5B8B" }}>
               Duje Mušura
               <Header.Subheader>DSP / Data Science Engineer</Header.Subheader>
             </Header>
