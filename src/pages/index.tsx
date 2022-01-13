@@ -26,7 +26,7 @@ const IndexPage = (props: LayoutProps) => (
       /> */}
       <Container text>
         <Header
-          style={{ fontSize: "5rem", fontWeight: "bold", color: "#2C5B8B" }}
+          style={{ fontSize: "5rem", fontWeight: "bold", color: "#9cbde0" }}
           inverted
           as="h2"
         >
